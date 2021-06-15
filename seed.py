@@ -1,6 +1,6 @@
 """Seed file to make sample data for pets db."""
 
-from models import db, User, Post
+from models import db, User, Post, Tag, PostTag
 from app import app
 
 # Create all tables
@@ -25,4 +25,21 @@ post3 = Post(title="You can do it!", content='Cause "Y Knot"', user_id=3)
 post4 = Post(title="Yolo", content="Sieze the day hombre", user_id=3)
         
 db.session.add_all([post1, post2, post3, post4])
+db.session.commit()
+
+tag1 = Tag(name='yolo')
+tag2 = Tag(name='bro')
+tag3 = Tag(name='boring')
+tag4 = Tag(name='sad')
+
+db.session.add_all([tag1, tag2, tag3, tag4])
+db.session.commit()
+
+post_tag1 = PostTag(post_id=1, tag_id=3)
+post_tag2 = PostTag(post_id=2, tag_id=4)
+post_tag3 = PostTag(post_id=3, tag_id=2)
+post_tag4 = PostTag(post_id=3, tag_id=1)
+post_tag5 = PostTag(post_id=4, tag_id=1)
+
+db.session.add_all([post_tag1, post_tag2, post_tag3, post_tag4, post_tag5])
 db.session.commit()

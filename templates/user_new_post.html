@@ -8,7 +8,15 @@
 	<input type="text" required name="title"><br>
 	<label for="content">Content</label>
   <textarea required rows="4" cols="50" name="content"></textarea><br>
-	<button formaction="/users/{{user.id}}" formmethod="GET">Cancel</button>
-  <button>Add</button>
+
+	<p>
+		{% for tag in tags %}
+		<input type="checkbox" name="post-tags" value="{{tag.id}}">
+		<label for="post-tags"> {{tag.name}}</label><br>
+		{% endfor %}
+	</p>
+
+	<button class="cancel" formaction="/users/{{user.id}}" formmethod="GET">Cancel</button>
+  <button class="g-button">Add</button>
 </form>
 {% endblock %}
